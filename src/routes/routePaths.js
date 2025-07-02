@@ -1,0 +1,10 @@
+export const loginPath = "entrar";
+export const recoverPasswordPath = "esqueci-minha-senha";
+export const signupPath = "cadastrar";
+export const homePath = "home";
+export const postsPath = "postagens";
+export const perfilPath = "perfil";
+export const categoriesPath = "categorias";
+export const useGuidePath = "guia-de-uso";
+export const logoutPath = "logout";
+export const adminPath = "admin";
