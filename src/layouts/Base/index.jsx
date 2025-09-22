@@ -1,28 +1,42 @@
-import { Outlet } from 'react-router-dom';
-import {Container, Logo} from './styles';
-import { Box, Text } from '@chakra-ui/react'; 
+// import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
+
+import { Flex, Box } from '@chakra-ui/react'
+import { ContainerBase, Content, BoxAside, MainWrapper } from './styles'
+
+import Header from '../../components/Header'
+import Sidebar from '../../components/Sidebar'
+import Footer from '../../components/Footer'
+
+const HEADER_HEIGHT = '64px'
 
 const BaseLayout = () => {
-  return (
-    <Container>
-      <Box
-        p={['20px', '60px', '80px']}
-        h="max-content"
-        maxWidth="600px"
-        w="90%"
-        m={5}
-        borderRadius="10px"
-        shadow="md"
-        bgColor="white"
-      >
-        <Logo>
-          <h1>IBEApp</h1>
-        </Logo>
-      </Box>
-      <Text color="black" textStyle="7xl" fontWeight="bold">This is a BASE Layout</Text>
-      <Outlet />
-    </Container>
-  );
-};
+	//fazer a side bar scrollar junto com a main
 
-export default BaseLayout;
+	return (
+		<Flex direction="column" minH="100vh" bg="#F0F6F8">
+			<Header />
+			<Flex as="main" flex="1" overflow="hidden" pt={{ base: '64px', lg: '0' }}>
+				<Box
+					as="aside"
+					display={{ base: 'none', lg: 'block' }}
+					w="300px"
+					position="sticky"
+					top={HEADER_HEIGHT}
+					h={`calc(100vh - ${HEADER_HEIGHT})`}
+					py={4}
+					pl={10} //temporarys
+					scrollbar="hidden"
+					overflowY="auto"
+				>
+					<Sidebar />
+				</Box>
+				<Box as="main" flex="1" p={4} overflowY="auto">
+					<Outlet />
+				</Box>
+			</Flex>
+		</Flex>
+	)
+}
+
+export default BaseLayout

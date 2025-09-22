@@ -1,23 +1,51 @@
-import styled from 'styled-components';
+import { chakra, Container, Box } from '@chakra-ui/react'
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #f0f6f8;
-  height: 100%;
-  width: 100%;
-`;
+export const ContainerBase = chakra(Container, {
+	base: {
+		display: 'relative',
+		background: '#F0F6F8',
 
-export const Logo = styled.div`
-  width: 100%;
-  text-align: center;
-  h1 {
-    font-family: Montserrat;
-    font-size: 40px;
-    font-weight: bold;
-    color: #31788a;
-    line-height: 1;
-  }
-`;
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'center',
+		height: '100vh',
+		width: '100%',
+		maxWidth: '100%',
+	},
+})
+
+export const Content = chakra(Box, {
+	base: {
+		display: 'flex',
+	},
+	lg: {
+		display: 'grid',
+		gridTemplateColumns: '300px auto',
+		gridTempplateRows: 'auto',
+		gridTemplateAreas: `'asidde .'`,
+		maxWidth: '1300px',
+		mx: 'auto',
+	},
+})
+
+export const BoxAside = chakra(Box, {
+	base: {
+		background: 'unset',
+		paddingBottom: 'unset',
+		display: 'none',
+	},
+	lg: {
+		gridArea: 'aside',
+		display: 'flex',
+	},
+})
+
+export const MainWrapper = chakra('main', {
+	base: {
+		mt: { base: 0, lg: 2 },
+		p: { base: 0, lg: 4 },
+		display: 'flex',
+		flex: '1',
+		overflow: 'hidden',
+	},
+})
