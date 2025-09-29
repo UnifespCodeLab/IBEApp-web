@@ -6,10 +6,10 @@ WORKDIR /app
 COPY package.json yarn.lock ./
 
 # Instala dependências
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 # Copia código para container
-COPY . .
+COPY --chown=app:app . .
 
 # Porta
 EXPOSE 3000

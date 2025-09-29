@@ -3,13 +3,11 @@ import { useEffect } from 'react';
 
 import BaseLayout from '../layouts/Base/index'
 
-let test = a;
-
 /*{   Não implementado por completo ainda     }*/
 const ProtectedRoute = () => {
   const navigate = useNavigate();
-  const isAuthenticated = false; //add a dynamic method call
-  // const user = 'shru ti';//add a dynamic method call
+  // const isAuthenticated = false;
+  const isAuthenticated = true; // temporario enquanto nao possui auth
 
   useEffect(() => {
     if(!isAuthenticated){
