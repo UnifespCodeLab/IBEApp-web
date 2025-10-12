@@ -16,7 +16,9 @@ export const ContainerBase = chakra(Container, {
 
 export const Content = chakra(Box, {
 	base: {
-		display: 'flex',
+		display: 'flex', // This makes the sidebar and main content sit side-by-side
+    maxWidth: '1300px',
+    mx: 'auto',
 	},
 	lg: {
 		display: 'grid',

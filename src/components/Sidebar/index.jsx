@@ -102,7 +102,6 @@ const Sidebar = () => {
 	return (
 		<StackAside>
 			<Flex
-				flexDirection="row"
 				align="center"
 				bg="primary.600"
 				p={6}
