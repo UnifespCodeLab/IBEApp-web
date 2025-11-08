@@ -3,7 +3,6 @@ import { Suspense, lazy } from 'react';
 
 import Loader from '../components/Loader';
 
-import BaseLayout from '../layouts/Base';
 import ProtectedRoute from './ProtectedRoute';
 
 import {
@@ -40,13 +39,11 @@ const AllRoutes = () => {
       <BrowserRouter>
         <Routes>
           {/* Rotas de autenticação */}
-          <Route element={<BaseLayout />}>
-            <Route path={loginPath} element={<Login />} />
-            <Route path={signupPath} element={<Signup />} />
-            <Route path={recoverPasswordPath} element={<RecoverPassword />} />
-          </Route>
-          {/* Rotas que dependem de informações do usuário.
-              Após de processar, renderiza layout base*/}
+          <Route path={loginPath} element={<Login />} />
+          <Route path={signupPath} element={<Signup />} />
+          <Route path={recoverPasswordPath} element={<RecoverPassword />} />
+
+          {/* Este grupo está CORRETO, pois usa a prop 'element' */}
           <Route element={<ProtectedRoute />}>
             <Route path={homePath} element={<Home />} />
             <Route path={perfilPath} element={<Perfil />} />
@@ -56,6 +53,8 @@ const AllRoutes = () => {
             <Route path={logoutPath} element={<Logout />} />
             <Route path={adminPath} element={<Admin />} />
           </Route>
+
+          {/* Rota de fallback */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>

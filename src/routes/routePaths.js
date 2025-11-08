@@ -1,4 +1,4 @@
-export const loginPath = "entrar";
+export const loginPath = "login";
 export const recoverPasswordPath = "esqueci-minha-senha";
 export const signupPath = "cadastrar";
 export const homePath = "home";
