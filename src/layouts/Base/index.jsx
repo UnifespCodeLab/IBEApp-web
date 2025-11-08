@@ -15,14 +15,15 @@ const BaseLayout = () => {
 
 	return (
 		<Flex direction="column" minH="100vh" bg="#F0F6F8">
-			<Header />
-			<Flex as="main" flex="1" overflow="hidden" pt={{ base: '64px', lg: '0' }}>
+			<Box as="header" h={HEADER_HEIGHT}>
+				<Header />
+			</Box>
+			<Flex as="main" flex="1" pt={{ base: { HEADER_HEIGHT }, lg: '0' }}>
 				<Box
 					as="aside"
+					position="sticky"
 					display={{ base: 'none', lg: 'block' }}
 					w="300px"
-					position="sticky"
-					top={HEADER_HEIGHT}
 					h={`calc(100vh - ${HEADER_HEIGHT})`}
 					py={4}
 					pl={10} //temporarys
@@ -31,7 +32,14 @@ const BaseLayout = () => {
 				>
 					<Sidebar />
 				</Box>
-				<Box as="main" flex="1" p={4} overflowY="auto">
+				<Box
+					flex="1"
+					display="flex"
+					flexDirection="column"
+					overflow="auto"
+					p={4}
+					px={{ base: 0, lg: 10 }}
+				>
 					<Outlet />
 				</Box>
 			</Flex>

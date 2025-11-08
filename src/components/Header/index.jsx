@@ -31,6 +31,7 @@ const Header = () => {
 
 	return (
 		<Box
+			as="header"
 			bg="white"
 			color="primary.600"
 			boxShadow="md"
