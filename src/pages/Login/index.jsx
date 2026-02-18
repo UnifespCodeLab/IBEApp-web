@@ -1,5 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
+import { 
+  Box,
+  Button,
+  Input,
+  Heading,
+  Stack,
+  Link,
+  Field
+} from "@chakra-ui/react"
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -11,49 +20,98 @@ const Login = () => {
   }
 
   return(
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        <h1>IBEApp</h1>
-        <div>
-          <label 
-            style={{ whiteSpace: "pre-wrap" }}>
-            Nome de Usuário / E-mail{"\n"}
-          </label>
-          <input
-            type="email"
-            placeholder="Seu nome de usuário ou e-mail"
-            required
-            onChange={(e) => setUsername(e.target.value)} />
-        </div>
-        <div>
-          <label
-            style={{ whiteSpace: "pre-wrap" }}>
-            Senha{"\n"}
-          </label>
-          <input 
-            type="password"
-            placeholder="Sua senha"
-            onChange={(e) => setPassword(e.target.value)}/>
-        </div>
+    <Box 
+      bg="light.50" 
+      minH="100vh" 
+      w="100vw" 
+      display="flex" 
+      alignItems="center" 
+      justifyContent="center"
+    >
+      <Box 
+        as="form" 
+        onSubmit={handleSubmit}
+        bg="white" 
+        p={['20px', '60px', '80px']} 
+        w="90%"
+        maxW="600px" 
+        borderRadius="10px" 
+        shadow="md"
+      >
+        <Stack gap="8">
+          <Box textAlign="center">
+            <Heading 
+              color="primary.600" 
+              fontSize="40px"
+              fontFamily="Montserrat"
+              fontWeight="bold"
+            >
+              IBEApp
+            </Heading>
+          </Box>
 
-        <div className="recall-forget">
-          <label>
-            <a href="#">Esqueceu a senha?</a>
-          </label>
-        </div>
+          <Stack gap="4">
+            <Field.Root>
+              <Field.Label color="primary.600" fontWeight="600" fontSize="18px">
+                Nome de Usuário / E-mail
+              </Field.Label>
+              <Input
+                placeholder="Seu nome de usuário ou e-mail"
+                h="48px"
+                px="16px"
+                fontSize="18px"
+                variant="outline"
+                focusBorderColor="primary.600"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </Field.Root>
 
-        <button
-          //color="#FFF"
-          //bgColor="#31788A"
-          //_hover={{bg: '#31788A'}}
-          //size="lg"
-          //mt={4}
-          //isLoading={loading}
-          type="submit">
-          Entrar
-        </button>
-      </form>
-    </div>
+            <Field.Root>
+              <Field.Label color="primary.600" fontWeight="600" fontSize="18px">
+                Senha
+              </Field.Label>
+              <Input 
+                type="password"
+                placeholder="Sua senha"
+                h="48px"
+                px="16px"
+                fontSize="18px"
+                focusBorderColor="primary.600"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <Box textAlign="right" width="full">
+                <Link
+                  href="/RecoverPassword"
+                  color="primary.600"
+                  fontWeight="bold"
+                  fontSize="18px"
+                  textAlign="right"
+                  mt="2"
+                  _hover={{ textDecoration: 'underline' }}
+                  >
+                  Esqueceu a senha?
+                </Link>
+              </Box>
+            </Field.Root>
+          </Stack>
+
+          <Button
+            type="submit"
+            bg="primary.600" 
+            _hover={{ bg: "primary.700" }}
+            color="white"
+            size="lg"
+            h="55px"
+            fontSize="lg"
+            width="full"
+          >
+            Entrar
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
   )
 } 
 
